@@ -26,3 +26,11 @@
 
 ##
 netty/Java高并发编程详解@www.java1234.com.pdf
+
+
+###cmake
+*.cbp
+*.ilk
+*.pdb
+*.cmake
+cmake-build-debug
