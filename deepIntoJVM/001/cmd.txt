@@ -1,0 +1,19 @@
+$ echo '
+public class Foo {
+ public static void main(String[] args) {
+  boolean flag = true;
+  if (flag) System.out.println("Hello, Java!");
+  if (flag == true) System.out.println("Hello, JVM!");
+ }
+}' > Foo.java
+//±àÒëjava
+$ javac Foo.java
+$ java Foo
+
+//Éú³Éjava»ã±àÓïÑÔ
+$ java -jar asmtools.jar jdis Foo.class > Foo.jasm.1
+//ĞŞ¸ÄÎÄ¼ş
+$ awk 'NR==1,/iconst_1/{sub(/iconst_1/, "iconst_2")} 1' Foo.jasm.1 > Foo.jasm
+$ java -jar asmtools.jar jasm Foo.jasm
+$ java Foo
+
